@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, reactive, defineExpose, } from 'vue'
+import { ref, onMounted, reactive, defineExpose, watch, watchEffect } from 'vue'
 
 defineProps({
   msg: String
@@ -50,10 +50,14 @@ const add = ()=> {
   });
 };
 
-console.log(this, 123);
+watch(arr, ()=> {
+  console.log('watch arr\'s length', arr.length);
+}, {
+  flush: 'post',
+});
 
 onMounted(()=> {
-  console.log('mounted211', this);
+  console.log('hello world mounted');
 });
 
 defineExpose({

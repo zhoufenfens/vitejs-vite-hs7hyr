@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
-import { ref, onMounted, reactive, defineExpose,watchEffect } from 'vue'
+import { ref, onMounted, reactive, defineExpose, watchEffect, watch } from 'vue'
 
 const helloWorld = ref(null);
 
@@ -10,6 +10,12 @@ watchEffect(()=> {
   if (helloWorld.value) {
     console.log(helloWorld.value.arr, 11);
   }
+});
+
+watch(helloWorld, ()=> {
+  console.log(helloWorld.value.count);
+}, {
+  flush: 'post',
 });
 
 onMounted(()=> {
