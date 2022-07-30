@@ -2,6 +2,21 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
+import { ref, onMounted, reactive, defineExpose,watchEffect } from 'vue'
+
+const helloWorld = ref(null);
+
+watchEffect(()=> {
+  if (helloWorld.value) {
+    console.log(helloWorld.value.arr, 11);
+  }
+});
+
+onMounted(()=> {
+  console.log('mounted', helloWorld.value.arr);
+});
+
+
 </script>
 
 <template>
@@ -13,7 +28,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue"  ref="helloWorld"/>
 </template>
 
 <style scoped>

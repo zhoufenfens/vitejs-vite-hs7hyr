@@ -31,9 +31,8 @@
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
-
 <script setup>
-import { ref, onMounted, reactive, } from 'vue'
+import { ref, onMounted, reactive, defineExpose, } from 'vue'
 
 defineProps({
   msg: String
@@ -51,15 +50,16 @@ const add = ()=> {
   });
 };
 
-
-
 console.log(this, 123);
 
 onMounted(()=> {
   console.log('mounted211', this);
 });
 
-
+defineExpose({
+  count,
+  arr,
+});
 
 </script>
 
